@@ -1,6 +1,6 @@
 package fr.istv.projetWeb;
 
-import java.awt.Image;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ public class Developpeur {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
 	private int idDev;
 	private String nom;
-	private Image avatar;
+	private String avatar;
 	@OneToMany
 	private List<Commentaire> commentaire;
 	@OneToMany
