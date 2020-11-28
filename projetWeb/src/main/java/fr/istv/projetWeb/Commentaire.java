@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 	
 @Entity
 public class Commentaire {
@@ -16,6 +18,7 @@ public class Commentaire {
 	private String message;
 	@ManyToOne
 	private Developpeur auteur;
+	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date date;
 	@ManyToOne
 	private Bug bug;

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Bug {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
@@ -18,6 +20,7 @@ public class Bug {
 	private String description;
 	private String priorite;
 	private String avancement;
+	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dateCreation;
 	@ManyToOne
 	private Developpeur developpeur;

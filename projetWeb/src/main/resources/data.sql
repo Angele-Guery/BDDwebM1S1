@@ -1,3 +1,2 @@
-INSERT INTO BUG (id_Bug,titre, description,priorite,avancement,date_Creation,developpeur_ID_DEV) VALUES
-  (1,'bug1','blablabla','shduifih','sdhifhidf',null,null),
-  (2,'bug2','biosdhfsd','sdhifudshf','hfoigudfg',null,null);
+INSERT INTO BUG (ID_BUG,AVANCEMENT,DATE_CREATION,DESCRIPTION,PRIORITE,TITRE,DEVELOPPEUR_ID_DEV) VALUES
+  (1,'TODO',null,'bdfhsfish','HAUTE','bug1',null);
