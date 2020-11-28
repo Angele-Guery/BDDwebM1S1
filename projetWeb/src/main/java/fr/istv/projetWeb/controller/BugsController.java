@@ -29,4 +29,22 @@ public class BugsController {
 	public List<Bug> getAllBugs(){
 		return bugsRepository.findAll();
 	}
+	
+	@PostMapping("bugs")
+	public Bug createBug(@Validated @RequestBody CreateBug bug) { 
+	    return bugsRepository.save(
+	        Bug
+	        .builder()
+	        .titre(bug.getTitre())
+	        .description(bug.getDescription())
+	        .priorite(bug.getPriorite())
+	        .avancement(bug.getAvancement())
+	        .dateCreation(bug.getDateCreation())
+	        .developpeur(bug.getDeveloppeur())
+	        .commentaire(bug.getCommentaire())
+            .build()
+	    );
+	}
+
 }
+
