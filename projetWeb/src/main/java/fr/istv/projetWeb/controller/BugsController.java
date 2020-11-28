@@ -23,10 +23,10 @@ import fr.istv.projetWeb.*;
 public class BugsController {
 
 	@Autowired
-    BugRepository studentsRepository;
+    BugRepository bugsRepository;
 	
 	@GetMapping("bugs")
 	public List<Bug> getAllBugs(){
-		return BugRepository.findAll();
+		return bugsRepository.findAll();
 	}
 }
