@@ -50,13 +50,13 @@ public class BugsController {
 	
 	
 	@DeleteMapping("bugs/{id}")
-	  public void deleteBug(@PathVariable Integer id) {
+	  public void deleteBugById(@PathVariable Integer id) {
 	    bugsRepository.deleteById(id);
 	  }
 	
 	
 	@PutMapping("/bugs/{id}")
-	  public Optional<Bug> replaceEmployee(@RequestBody CreateBug bug, @PathVariable int id) {
+	  public Optional<Bug> replaceBugById(@RequestBody CreateBug bug, @PathVariable int id) {
 
 	    return bugsRepository.findById(id)
 	      .map(Bug -> {
@@ -68,5 +68,14 @@ public class BugsController {
 	        return bugsRepository.save(Bug);
 	      });
 	  }
+	
+	
+	
+	
+	@GetMapping("bugs/{id}")
+	public Optional<Bug> getBugById(@PathVariable Integer id){
+		return bugsRepository.findById(id);
+	}
+	
 }
 
