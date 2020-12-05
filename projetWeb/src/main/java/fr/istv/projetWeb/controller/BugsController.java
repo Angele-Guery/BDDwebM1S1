@@ -56,7 +56,7 @@ public class BugsController {
 	
 	
 	@PutMapping("/bugs/{id}")
-	  public Optional<Bug> replaceEmployee(@RequestBody CreateBug bug, @PathVariable int id) {
+	  public Optional<Bug> changeBug(@RequestBody CreateBug bug, @PathVariable int id) {
 
 	    return bugsRepository.findById(id)
 	      .map(Bug -> {
