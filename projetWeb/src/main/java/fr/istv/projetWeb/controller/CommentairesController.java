@@ -24,10 +24,18 @@ public class CommentairesController {
 	
 	@Autowired
     CommentaireRepository commentairesRepository;
+	BugRepository bugsRepository;
+	DeveloppeurRepository developpeursRepository;
 	
 	@GetMapping("commentaires")
 	public List<Commentaire> getAllCommentaires(){
 		return commentairesRepository.findAll();
+	}
+	public List<Bug> getAllBugs(){
+		return bugsRepository.findAll();
+	}
+	public List<Developpeur> getAllDeveloppeurs(){
+		return developpeursRepository.findAll();
 	}
 	
 	@PostMapping("commentaires")
@@ -42,5 +50,45 @@ public class CommentairesController {
             .build()
 	    );
 	}
+	
+	
+	@PostMapping("commentaires")
+	public Commentaire ajoutCommentaire(@Validated @RequestBody CreateCommentaire commentaire, CreateBug bug, CreateDeveloppeur developpeur) { 
+	    commentairesRepository.save(
+	        Commentaire
+	        .builder()
+	        .message(commentaire.getMessage())
+	        .auteur(developpeur)
+	        .date(commentaire.getDate())
+	        .bug(bug)
+            .build()
+	    );
+	    /*bugsRepository.save(
+		        Bug
+		        .builder()
+		        .titre(bug.getTitre())
+		        .description(bug.getDescription())
+		        .priorite(bug.getPriorite())
+		        .avancement(bug.getAvancement())
+		        .dateCreation(bug.getDateCreation())
+		        .developpeur(developpeur)
+		        .commentaire(List<Commentaire>.add(commentaire))
+	            .build()
+	    );
+	    developpeursRepository.save(
+		    	Developpeur
+		        .builder()
+		        .nom(developpeur.getNom())
+		        .avatar(developpeur.getAvatar())
+		        .commentaire(List<Commentaire>.add(commentaire))
+		        .bug(List<Bug>.add(bug))
+	            .build()
+	    );
+	    */
+	    
+	    
+	}
+	
+	
 	
 }
