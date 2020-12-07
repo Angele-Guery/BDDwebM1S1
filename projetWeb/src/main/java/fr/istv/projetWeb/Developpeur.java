@@ -2,6 +2,7 @@ package fr.istv.projetWeb;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,4 +33,7 @@ public class Developpeur {
 	@OneToMany
 	private List<Bug> bug;
 	
+	public void addBug(Optional<Bug> bug) {
+		this.bug.add(bug.get());
+	}
 }

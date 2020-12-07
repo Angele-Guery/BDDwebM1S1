@@ -2,11 +2,12 @@ package fr.istv.projetWeb.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +27,7 @@ public class BugsController {
 
 	@Autowired
     BugRepository bugsRepository;
+	DeveloppeurRepository devRepository;
 
 	@GetMapping("bugs")
 	public List<Bug> getAllBugs(){
@@ -88,12 +90,29 @@ public class BugsController {
 		return bugsRepository.findTerminebugs();
 	}
 
-	@GetMapping("bugs/date/'{datedebut}'/'{datefin}'")
-	public List<Bug> getBugByDate(@PathVariable("datedebut") Date debut, @PathVariable("datefin") Date fin){
+	@GetMapping("bugs/date")
+	public List<Bug> getBugByDate(@RequestParam("debut") @DateTimeFormat(pattern = "dd-MM-yyyy") Date debut, 
+			@RequestParam("fin") @DateTimeFormat(pattern = "dd-MM-yyyy") Date fin){
 		return bugsRepository.findBugByDate(debut,fin);
 	}
-	@GetMapping("bugs/{titre}")
-	public List<Bug> getBugTitre(@PathVariable String titre){
+	@GetMapping("bugs/titre")
+	public List<Bug> getBugTitre(@RequestParam String titre){
 		return bugsRepository.findBugByTitre(titre);
+	}
+	
+	
+	//ne marche pas, a finir
+	@PutMapping("/bugs/dev/{idbug}/{iddev}")
+	public Optional<Bug> addDev(@PathVariable("idbug") int idbug, @PathVariable("iddev") int iddev) {
+		devRepository.findById(iddev).map(
+				Dev -> {
+					Dev.addBug(bugsRepository.findById(idbug));
+					return devRepository.save(Dev);
+				});
+		return bugsRepository.findById(idbug)
+	      .map(Bug -> {
+	      Bug.setDeveloppeur(devRepository.findById(iddev).get());
+	      return bugsRepository.save(Bug);
+	    });
 	}
 }
