@@ -50,32 +50,42 @@ public class BugsController {
 	
 	
 	@DeleteMapping("bugs/{id}")
-	  public void deleteBugById(@PathVariable Integer id) {
+	public void deleteBugById(@PathVariable Integer id) {
 	    bugsRepository.deleteById(id);
-	  }
+	}
 	
 	
 	@PutMapping("/bugs/{id}")
-	  public Optional<Bug> replaceBugById(@RequestBody CreateBug bug, @PathVariable int id) {
-
-	    return bugsRepository.findById(id)
+	public Optional<Bug> replaceBugById(@RequestBody CreateBug bug, @PathVariable int id) {
+		return bugsRepository.findById(id)
 	      .map(Bug -> {
-	        Bug.setTitre(bug.getTitre());
-	        Bug.setDescription(bug.getDescription());
-	        Bug.setPriorite(bug.getPriorite());
-	        Bug.setAvancement(bug.getAvancement());
-	        Bug.setDateCreation(bug.getDateCreation());
-	        return bugsRepository.save(Bug);
-	      });
-	  }
-	
-	
-	
+	      Bug.setTitre(bug.getTitre());
+	      Bug.setDescription(bug.getDescription());
+	      Bug.setPriorite(bug.getPriorite());
+	      Bug.setAvancement(bug.getAvancement());
+	      Bug.setDateCreation(bug.getDateCreation());
+	      return bugsRepository.save(Bug);
+	    });
+	}
 	
 	@GetMapping("bugs/{id}")
 	public Optional<Bug> getBugById(@PathVariable Integer id){
 		return bugsRepository.findById(id);
 	}
 	
+	@GetMapping("bugs/todo")
+	public List<Bug> getBugToDo(){
+		return bugsRepository.findTODObugs();
+	}
+	
+	@GetMapping("bugs/encours")
+	public List<Bug> getBugEnCours(){
+		return bugsRepository.findEnCoursbugs();
+	}
+	
+	@GetMapping("bugs/termine")
+	public List<Bug> getBugTermine(){
+		return bugsRepository.findTerminebugs();
+	}
 }
 
