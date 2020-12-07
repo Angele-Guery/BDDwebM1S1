@@ -91,9 +91,9 @@ public class BugsController {
 	@GetMapping("bugs/date/'{datedebut}'/'{datefin}'")
 	public List<Bug> getBugByDate(@PathVariable("datedebut") Date debut, @PathVariable("datefin") Date fin){
 		return bugsRepository.findBugByDate(debut,fin);
-
-		@GetMapping("bugs/{titre}")
-		public List<Bug> getBugTitre(@PathVariable String titre){
-			return bugsRepository.findBugByTitre(titre);
+	}
+	@GetMapping("bugs/{titre}")
+	public List<Bug> getBugTitre(@PathVariable String titre){
+		return bugsRepository.findBugByTitre(titre);
 	}
 }
