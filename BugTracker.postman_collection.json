@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "005e11f5-061b-45b8-b39b-f08fb1a6f538",
+		"name": "BugTracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getall",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addBug",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idBug\": 3,\r\n    \"titre\": \"bug2\",\r\n    \"description\": \"jbkfgisdkbsfidkuhb\",\r\n    \"priorite\": \"sdohfo\",\r\n    \"avancement\": \"dfonhsfid\",\r\n    \"dateCreation\": null,\r\n    \"developpeur\": null,\r\n    \"commentaire\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/bugs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteBug",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeBug",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idBug\": 2,\r\n    \"titre\": \"test changement\",\r\n    \"description\": \"jbkfgisdkbsfidkuhb\",\r\n    \"priorite\": \"HAUTE\",\r\n    \"avancement\": \"TODO\",\r\n    \"dateCreation\": null,\r\n    \"developpeur\": null,\r\n    \"commentaire\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/bugs/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getToDo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs/todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTermine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs/termine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"termine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEnCours",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs/encours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"encours"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
