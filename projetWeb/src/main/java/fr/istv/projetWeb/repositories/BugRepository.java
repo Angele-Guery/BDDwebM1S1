@@ -4,6 +4,7 @@ package fr.istv.projetWeb.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import fr.istv.projetWeb.Bug;
@@ -20,5 +21,6 @@ public interface BugRepository extends JpaRepository<Bug, Integer>{
 	@Query("SELECT b FROM Bug b WHERE b.avancement = 'EN COURS'")
 	List<Bug> findEnCoursbugs();
 	
-	
+	@Query("SELECT b FROM Bug b WHERE b.dateCreation > ?1 AND b.dateCreation < ?2")
+	List<Bug> findBugByDate(Date date1, Date date2);
 }

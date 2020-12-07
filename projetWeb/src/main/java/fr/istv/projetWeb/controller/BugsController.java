@@ -2,7 +2,7 @@ package fr.istv.projetWeb.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,6 +86,11 @@ public class BugsController {
 	@GetMapping("bugs/termine")
 	public List<Bug> getBugTermine(){
 		return bugsRepository.findTerminebugs();
+	}
+	
+	@GetMapping("bugs/date/'{datedebut}'/'{datefin}'")
+	public List<Bug> getBugByDate(@PathVariable("datedebut") Date debut, @PathVariable("datefin") Date fin){
+		return bugsRepository.findBugByDate(debut,fin);
 	}
 }
 
