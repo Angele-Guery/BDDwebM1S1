@@ -87,5 +87,10 @@ public class BugsController {
 	public List<Bug> getBugTermine(){
 		return bugsRepository.findTerminebugs();
 	}
+	
+	@GetMapping("bugs/{titre}")
+	public List<Bug> getBugTitre(@PathVariable String titre){
+		return bugsRepository.findBugByTitre(titre);
+	}
 }
 
