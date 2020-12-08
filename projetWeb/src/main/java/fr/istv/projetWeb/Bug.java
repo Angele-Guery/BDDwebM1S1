@@ -35,7 +35,7 @@ public class Bug {
 	private Date dateCreation;
 	@ManyToOne
 	private Developpeur developpeur;
-	@OneToMany
+	@OneToMany(mappedBy="bug")
 	private List<Commentaire> commentaire;
 	
 	

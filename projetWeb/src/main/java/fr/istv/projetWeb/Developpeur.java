@@ -28,9 +28,9 @@ public class Developpeur {
 	private int idDev;
 	private String nom;
 	private String avatar;
-	@OneToMany
+	@OneToMany(mappedBy="bug")
 	private List<Commentaire> commentaire;
-	@OneToMany
+	@OneToMany(mappedBy="bug")
 	private List<Bug> bug;
 	
 	public void addBug(Optional<Bug> bug) {
