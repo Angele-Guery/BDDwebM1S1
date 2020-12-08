@@ -116,7 +116,7 @@ public class BugsController {
 				if (devFound.isPresent()) {
 					// Le développeur est trouvé
 					bugFound.setDeveloppeur(devFound.get());
-					return bugFound;
+					return bugsRepository.save(bugFound);
 				} else {
 					// Le développeur n'est pas trouvé
 					throw new RuntimeException("Developpeur non trouvé");
