@@ -51,7 +51,7 @@ public class CommentairesController {
 	    );
 	}
 	
-	
+	/*
 	@PostMapping("commentaires")
 	public Commentaire ajoutCommentaire(@Validated @RequestBody CreateCommentaire commentaire, CreateBug bug, CreateDeveloppeur developpeur) { 
 	    commentairesRepository.save(
@@ -85,9 +85,9 @@ public class CommentairesController {
 	            .build()
 	    );
 	    */
+	   
 	    
-	    
-	}
+	//}
 	
 	
 	

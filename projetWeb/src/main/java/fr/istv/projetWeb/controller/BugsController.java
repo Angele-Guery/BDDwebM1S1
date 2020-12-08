@@ -2,12 +2,14 @@ package fr.istv.projetWeb.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +29,8 @@ public class BugsController {
 
 	@Autowired
     BugRepository bugsRepository;
+	
+	@Autowired
 	DeveloppeurRepository devRepository;
 
 	@GetMapping("bugs")
@@ -101,18 +105,28 @@ public class BugsController {
 	}
 	
 	
-	//ne marche pas, a finir
 	@PutMapping("/bugs/dev/{idbug}/{iddev}")
-	public Optional<Bug> addDev(@PathVariable("idbug") int idbug, @PathVariable("iddev") int iddev) {
-		devRepository.findById(iddev).map(
-				Dev -> {
-					Dev.addBug(bugsRepository.findById(idbug));
-					return devRepository.save(Dev);
-				});
-		return bugsRepository.findById(idbug)
-	      .map(Bug -> {
-	      Bug.setDeveloppeur(devRepository.findById(iddev).get());
-	      return bugsRepository.save(Bug);
-	    });
+	public ResponseEntity<?> addDev(@PathVariable("idbug") int idbug, @PathVariable("iddev") int iddev) {
+		// Dans la base de données, c'est le bug qui stock le lien avec le développeur.
+		// Donc on ajoute le développeur au bug.
+		try {
+			Bug bug = this.bugsRepository.findById(idbug).map(bugFound -> {
+				// Le bug est trouvé on cherche le développeur
+				Optional<Developpeur> devFound = this.devRepository.findById(iddev);
+				if (devFound.isPresent()) {
+					// Le développeur est trouvé
+					bugFound.setDeveloppeur(devFound.get());
+					return bugFound;
+				} else {
+					// Le développeur n'est pas trouvé
+					throw new RuntimeException("Developpeur non trouvé");
+				}
+				// Le bug n'est pas trouvé
+			}).orElseThrow(() -> new RuntimeException("Bug non trouvé"));
+			return ResponseEntity.ok(bug);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e);
+		}
+
 	}
 }
