@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,7 +30,9 @@ public class Developpeur {
 	private String nom;
 	private String avatar;
 	@OneToMany(mappedBy="auteur")
+	@JsonManagedReference
 	private List<Commentaire> commentaire;
+	@JsonManagedReference
 	@OneToMany(mappedBy="developpeur")
 	private List<Bug> bug;
 	

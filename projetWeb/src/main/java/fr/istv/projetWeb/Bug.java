@@ -10,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,8 +36,10 @@ public class Bug {
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dateCreation;
 	@ManyToOne
+	@JsonBackReference
 	private Developpeur developpeur;
-	@OneToMany(mappedBy="bug")
+	@OneToMany(mappedBy="bug", orphanRemoval=true)
+	@JsonManagedReference
 	private List<Commentaire> commentaire;
 	
 	

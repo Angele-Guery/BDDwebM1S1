@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -27,9 +28,11 @@ public class Commentaire {
 	private int idCom;
 	private String message;
 	@ManyToOne
+	@JsonBackReference
 	private Developpeur auteur;
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date date;
 	@ManyToOne
+	@JsonBackReference
 	private Bug bug;
 }
