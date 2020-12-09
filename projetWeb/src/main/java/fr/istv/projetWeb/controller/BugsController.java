@@ -105,7 +105,7 @@ public class BugsController {
 	}
 	
 	
-	@PutMapping("/bugs/dev/{idbug}/{iddev}")
+	@PutMapping("/bugs/{idbug}/devs/{iddev}")
 	public ResponseEntity<?> addDev(@PathVariable("idbug") int idbug, @PathVariable("iddev") int iddev) {
 		// Dans la base de données, c'est le bug qui stock le lien avec le développeur.
 		// Donc on ajoute le développeur au bug.

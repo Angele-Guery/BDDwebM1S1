@@ -27,7 +27,11 @@ public class CommentairesController {
 	
 	@Autowired
     CommentaireRepository commentairesRepository;
+	
+	@Autowired
 	BugRepository bugsRepository;
+	
+	@Autowired
 	DeveloppeurRepository developpeursRepository;
 	
 	@GetMapping("commentaires")
@@ -37,10 +41,10 @@ public class CommentairesController {
 	
 	@PostMapping("commentaires/{idbug}/{iddev}")
 	public ResponseEntity<?> createCommentaire(@Validated @RequestBody CreateCommentaire commentaire, @PathVariable("idbug") int idbug, @PathVariable("iddev") int iddev) {
-		Bug bug = this.bugsRepository.findById(idbug).get();
-		Developpeur developpeur = this.developpeursRepository.findById(iddev).get();
-		if(developpeur != null && bug != null) {
-			 commentairesRepository.save(
+		try {
+			Bug bug = this.bugsRepository.findById(idbug).map(bugFound -> {return bugFound;}).orElseThrow(() -> new RuntimeException("Bug non trouvé"));
+			Developpeur developpeur = this.developpeursRepository.findById(iddev).map(devFound -> {return devFound;}).orElseThrow(() -> new RuntimeException("Developpeur non trouvé"));
+			return ResponseEntity.ok(commentairesRepository.save(
 				        Commentaire
 				        .builder()
 				        .message(commentaire.getMessage())
@@ -48,15 +52,10 @@ public class CommentairesController {
 				        .date(commentaire.getDate())
 				        .bug(bug)
 			            .build()
-					 );
-			 return ResponseEntity.ok(commentaire);
-		}
-		else {
-			return ResponseEntity.status(HttpStatus.NO_CONTENT).body("bug ou/et developpeur inexistant");
-		}
-	    	
+					 ));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e);
+		}   	
 	}
-	
-	
 	
 }
