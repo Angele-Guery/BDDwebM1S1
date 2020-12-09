@@ -37,8 +37,8 @@ public class DeveloppeursController {
 	        .builder()
 	        .nom(developpeur.getNom())
 	        .avatar(developpeur.getAvatar())
-	        .commentaire(developpeur.getCommentaire())
-	        .bug(developpeur.getBug())
+	        /*.commentaire(developpeur.getCommentaire())
+	        .bug(developpeur.getBug())*/
             .build()
 	    );
 	}

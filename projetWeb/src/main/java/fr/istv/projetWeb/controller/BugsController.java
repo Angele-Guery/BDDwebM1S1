@@ -48,8 +48,8 @@ public class BugsController {
 	        .priorite(bug.getPriorite())
 	        .avancement(bug.getAvancement())
 	        .dateCreation(bug.getDateCreation())
-	        .developpeur(bug.getDeveloppeur())
-	        .commentaire(bug.getCommentaire())
+	        /*.developpeur(bug.getDeveloppeur())
+	        .commentaire(bug.getCommentaire())*/
             .build()
 	    );
 	}

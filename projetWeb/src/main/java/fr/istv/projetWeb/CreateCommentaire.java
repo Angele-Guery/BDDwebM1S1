@@ -20,8 +20,8 @@ import lombok.Setter;
 
 public class CreateCommentaire {
 	private String message;
-	private Developpeur auteur;
+	//private Developpeur auteur;
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date date;
-	private Bug bug;
+	//private Bug bug;
 }

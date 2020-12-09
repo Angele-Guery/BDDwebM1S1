@@ -25,8 +25,8 @@ public class CreateBug {
 	private String avancement;
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dateCreation;
-	private Developpeur developpeur;
-	private List<Commentaire> commentaire;
+	/*private Developpeur developpeur;
+	private List<Commentaire> commentaire;*/
 	
 }
 

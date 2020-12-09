@@ -21,6 +21,6 @@ import lombok.Setter;
 public class CreateDeveloppeur {
 	private String nom;
 	private String avatar;
-	private List<Commentaire> commentaire;
-	private List<Bug> bug;
+	//private List<Commentaire> commentaire;
+	//private List<Bug> bug;
 }
