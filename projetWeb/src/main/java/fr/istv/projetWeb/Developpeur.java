@@ -10,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,15 +26,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Builder
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idDev")
 public class Developpeur {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
 	private int idDev;
 	private String nom;
 	private String avatar;
 	@OneToMany(mappedBy="auteur")
-	@JsonManagedReference
+	//@JsonManagedReference
 	private List<Commentaire> commentaire;
-	@JsonManagedReference
+	//@JsonManagedReference
 	@OneToMany(mappedBy="developpeur")
 	private List<Bug> bug;
 	

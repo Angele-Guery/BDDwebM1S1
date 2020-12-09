@@ -12,7 +12,9 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +28,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Builder
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idBug")
 public class Bug {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
 	private int idBug;
@@ -36,10 +41,10 @@ public class Bug {
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date dateCreation;
 	@ManyToOne
-	@JsonBackReference
+	//@JsonBackReference
 	private Developpeur developpeur;
 	@OneToMany(mappedBy="bug", orphanRemoval=true)
-	@JsonManagedReference
+	//@JsonManagedReference
 	private List<Commentaire> commentaire;
 	
 	

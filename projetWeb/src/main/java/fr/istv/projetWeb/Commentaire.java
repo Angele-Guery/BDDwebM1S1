@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,16 +25,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Builder
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "idCom")
 public class Commentaire {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
 	private int idCom;
 	private String message;
 	@ManyToOne
-	@JsonBackReference
+	//@JsonBackReference
 	private Developpeur auteur;
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private Date date;
 	@ManyToOne
-	@JsonBackReference
+	//@JsonBackReference
 	private Bug bug;
 }
