@@ -16,7 +16,7 @@ export class ListeTodoComponent implements OnInit {
   constructor(private BugService: BugServiceService) { }
 
   ngOnInit(): void {
-    this.BugService.getBugsList()
+    this.BugService.getBugsToDoList()
     .pipe(delay(2000))
     .subscribe((bugsResponse => {
       this.bugs = bugsResponse;
