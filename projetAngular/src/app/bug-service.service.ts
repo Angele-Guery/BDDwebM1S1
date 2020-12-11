@@ -14,7 +14,7 @@ export class BugServiceService {
   constructor(private http: HttpClient) { }
 
   public getBugsList(): Observable<Bug[]> {
-    return this.http.get<Bug[]>(`${environment.url}/bugs`);
+    return this.http.get<Bug[]>(`http://localhost:5000/bugs`);
   }
 
   public getBugsToDoList(): Observable<Bug[]> {
