@@ -36,7 +36,7 @@ public class DeveloppeursController {
 	    	Developpeur
 	        .builder()
 	        .nom(developpeur.getNom())
-	        .avatar(developpeur.getAvatar())
+	        .avatar("https://lesexpertsdurecouvrement.com/wp-content/uploads/2015/11/default-avatar-596x596.jpg")
 	        /*.commentaire(developpeur.getCommentaire())
 	        .bug(developpeur.getBug())*/
             .build()

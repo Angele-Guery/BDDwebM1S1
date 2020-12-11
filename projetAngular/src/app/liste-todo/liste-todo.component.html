@@ -6,6 +6,7 @@
         <div class="col-3"><span class="badge badge-primary">{{b.idBug}}</span></div>
         <div class="col-3">{{b.titre}} </div>
         <div class="col-3">{{b.description}}</div>
+        <img src="{{b.developpeur.avatar}}" width="50" height="50" style="border-radius: 100px;">
         <div class="col-3 d-flex justify-content-end">
           <!-- <button (click)="deleteBug(b.id)" type="button" class="btn btn-outline-danger"> 
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash text-danger" fill="currentColor"
