@@ -7,11 +7,13 @@ import { ListeTodoComponent } from './liste-todo/liste-todo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListeEncoursComponent } from './liste-encours/liste-encours.component';
+import { ListeTermineComponent } from './liste-termine/liste-termine.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListeTodoComponent,
-    ListeEncoursComponent
+    ListeEncoursComponent,
+    ListeTermineComponent
   ],
   imports: [
     BrowserModule,
