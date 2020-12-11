@@ -25,11 +25,20 @@ public class DeveloppeursController {
 	@Autowired
     DeveloppeurRepository developpeursRepository;
 	
+	/**
+	 * récupère la liste des developpeurs
+	 * @return la liste des developpeurs
+	 */
 	@GetMapping("developpeurs")
 	public List<Developpeur> getAllDeveloppeurs(){
 		return developpeursRepository.findAll();
 	}
 	
+	/**
+	 * permet d'ajouter un developpeur dans la liste
+	 * @param developpeur
+	 * @return le developpeur ajouté
+	 */
 	@PostMapping("developpeurs")
 	public Developpeur createDeveloppeur(@Validated @RequestBody CreateDeveloppeur developpeur) { 
 	    return developpeursRepository.save(

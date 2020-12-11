@@ -34,11 +34,22 @@ public class CommentairesController {
 	@Autowired
 	DeveloppeurRepository developpeursRepository;
 	
+	/**
+	 * récupère la liste des commentaires
+	 * @return la liste des commentaires récupérée
+	 */
 	@GetMapping("commentaires")
 	public List<Commentaire> getAllCommentaires(){
 		return commentairesRepository.findAll();
 	}
 	
+	/**
+	 * ajoute un commentaire écrit par un developpeur a un bug
+	 * @param commentaire : le contenu du commentaire a donner
+	 * @param idbug : l'identifiant du bug auquel on veut ajouter un commentaire
+	 * @param iddev : l'identifiant du developpeur qui écrit le commentaire
+	 * @return le commentaire écrit
+	 */
 	@PostMapping("commentaires/{idbug}/{iddev}")
 	public ResponseEntity<?> createCommentaire(@Validated @RequestBody CreateCommentaire commentaire, @PathVariable("idbug") int idbug, @PathVariable("iddev") int iddev) {
 		try {

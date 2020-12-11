@@ -31,7 +31,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"idBug\": 3,\r\n    \"titre\": \"bug2\",\r\n    \"description\": \"jbkfgisdkbsfidkuhb\",\r\n    \"priorite\": \"sdohfo\",\r\n    \"avancement\": \"dfonhsfid\",\r\n    \"dateCreation\": null,\r\n    \"developpeur\": null,\r\n    \"commentaire\": null\r\n}",
+					"raw": "{\r\n    \"titre\": \"bug ajouté\",\r\n    \"description\": \"ceci est une description\",\r\n    \"priorite\": \"HAUTE\",\r\n    \"avancement\": \"TERMINE\",\r\n    \"dateCreation\": \"15-02-2019\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -79,7 +79,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"idBug\": 2,\r\n    \"titre\": \"test changement\",\r\n    \"description\": \"jbkfgisdkbsfidkuhb\",\r\n    \"priorite\": \"HAUTE\",\r\n    \"avancement\": \"TODO\",\r\n    \"dateCreation\": null,\r\n    \"developpeur\": null,\r\n    \"commentaire\": null\r\n}",
+					"raw": "{\r\n    \"titre\": \"bug todo 1\",\r\n    \"description\": \"jbkfgisdkbsfidkuhb\",\r\n    \"priorite\": \"HAUTE\",\r\n    \"avancement\": \"EN COURS\",\r\n    \"dateCreation\": \"12-01-2001\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -87,7 +87,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/bugs/2",
+					"raw": "http://localhost:5000/bugs/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -95,7 +95,7 @@
 					"port": "5000",
 					"path": [
 						"bugs",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -156,6 +156,185 @@
 					"path": [
 						"bugs",
 						"encours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBugByDate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs/date?debut=01-01-2019&fin=31-12-2019",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"date"
+					],
+					"query": [
+						{
+							"key": "debut",
+							"value": "01-01-2019"
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "fin",
+							"value": "31-12-2019"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBugByTitre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs/titre?titre=todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"titre"
+					],
+					"query": [
+						{
+							"key": "titre",
+							"value": "todo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDev",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"Michel\",\r\n    \"avatar\": \"https://lesexpertsdurecouvrement.com/wp-content/uploads/2015/11/default-avatar-596x596.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/developpeurs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"developpeurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDevs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/developpeurs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"developpeurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDevToBug",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/bugs/1/devs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"bugs",
+						"1",
+						"devs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCom",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCom\": 1,\r\n    \"message\": \"ceci est un commentaire\",\r\n    \"date\": \"15-02-2019\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/commentaires/1/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"commentaires",
+						"1",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getcoms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/commentaires",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"commentaires"
 					]
 				}
 			},
