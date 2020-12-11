@@ -289,10 +289,12 @@
     }
   </style>
 
-<center><h3 class="mt-3">EN COURS</h3></center>
+<h3 class="mt-3">EN COURS</h3>
 
 <div class="card-container">
-    <a class="card" target="_blank" rel="noopener" *ngFor="let b of bugs">
+    <table>
+        <tr *ngFor="let b of bugs">
+    <a class="card" target="_blank" rel="noopener" >
         <div class="row">
         <div class="col-3">{{b.titre}} </div>
         <div class="col-3" *ngIf="b.developpeur"> {{b.developpeur.nom}} <img src="{{b.developpeur.avatar}}" width="50" height="50" style="border-radius: 100px;" *ngIf="b.developpeur"></div>
@@ -301,6 +303,8 @@
         </div>
     </div>
     </a>
+</tr>
+</table>
   </div>
 
 <!--<ul class="list-group">
