@@ -29,7 +29,7 @@ import lombok.Setter;
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
 		  property = "idCom")
 public class Commentaire {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) //Automatique
 	private int idCom;
 	private String message;
 	@ManyToOne

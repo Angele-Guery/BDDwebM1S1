@@ -293,16 +293,23 @@
 
 <div class="card-container">
     <table>
-        <tr *ngFor="let b of bugs">
-    <a class="card" target="_blank" rel="noopener" >
-        <div class="row">
-        <div class="col-3">{{b.titre}} </div>
-        <div class="col-3" *ngIf="b.developpeur"> {{b.developpeur.nom}} <img src="{{b.developpeur.avatar}}" width="50" height="50" style="border-radius: 100px;" *ngIf="b.developpeur"></div>
-        
-        <div class="col-3 d-flex justify-content-end">
-        </div>
-    </div>
+      <tr *ngFor="let b of bugs">
+    <a class="card" target="_blank" rel="noopener" style="background-color: #eeeeee;">
+      <div class="row">
+        <!--<div class="col-3"><span class="badge badge-primary">{{b.idBug}}</span></div>-->
+        <table>
+          <tr>
+            <td colspan="2"><div class="col-3" style="font-size: 20px;" >{{b.titre}} </div></td>
+          </tr>
+          <tr>
+            <td><div class="col-3" *ngIf="b.developpeur">{{b.developpeur.nom}} </div></td>
+            <td rowspan="2"><img src="{{b.developpeur.avatar}}" width="25" height="25" style="border-radius: 100px; margin-left: 50px;" *ngIf="b.developpeur"></td>
+          </tr>
+        </table>
+          <div class="col-3 d-flex justify-content-end">
+          </div>
+      </div>
     </a>
-</tr>
-</table>
+    </tr>
+    </table>
   </div>

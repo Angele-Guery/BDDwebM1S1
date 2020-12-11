@@ -32,7 +32,7 @@ import lombok.Setter;
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
 		  property = "idBug")
 public class Bug {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) //Automatique
 	private int idBug;
 	private String titre;
 	private String description;

@@ -30,7 +30,7 @@ import lombok.Setter;
 		  generator = ObjectIdGenerators.PropertyGenerator.class, 
 		  property = "idDev")
 public class Developpeur {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) //Automatique
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) //Automatique
 	private int idDev;
 	private String nom;
 	private String avatar;
