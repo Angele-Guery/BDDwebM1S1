@@ -300,12 +300,11 @@
       <!--<div class="col-3"><span class="badge badge-primary">{{b.idBug}}</span></div>-->
       <table>
         <tr>
-          <td><div class="col-3">{{b.titre}} </div></td>
-          <td rowspan="2"><img src="{{b.developpeur.avatar}}" width="25" height="25" style="border-radius: 100px; margin-left: 50px;" *ngIf="b.developpeur"></td>
+          <td><div class="col-3" style="font-size: medium">{{b.titre}} </div></td>
         </tr>
         <tr>
           <td><div class="col-3" *ngIf="b.developpeur">{{b.developpeur.nom}} </div></td>
-          <td></td>
+          <td rowspan="2"><img src="{{b.developpeur.avatar}}" width="25" height="25" style="border-radius: 100px; margin-left: 50px;" *ngIf="b.developpeur"></td>
         </tr>
       </table>
         <div class="col-3 d-flex justify-content-end">
