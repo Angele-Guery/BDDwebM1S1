@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { ListeTodoComponent } from './liste-todo/liste-todo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListeEncoursComponent } from './liste-encours/liste-encours.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ListeTodoComponent
+    ListeTodoComponent,
+    ListeEncoursComponent
   ],
   imports: [
     BrowserModule,
